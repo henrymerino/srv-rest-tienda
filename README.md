@@ -5,7 +5,7 @@ servicio rest de tienda online
 Servicio que realiza petición de peticiones de productos, registra al cliente, productos, tiendas y sus productos
 
 ###Arquitectura
-Servicio rest, maven con una capa de conexión a base de datos postgres,una capa de servicio, archivo de propdiedades, que contiene la conexión a un DataSource EAP 7.4.
+Servicio rest, maven con una capa de conexión a base de datos postgres,una capa de servicio, archivo de propdiedades, que contiene la conexión a un DataSource EAP 7.4, jwt para autenticación y autorización a las Urls
 
 ###Despligue
 - Crear base de detaos store, con tablas: client, client_order, detail_order, orden, product, store (ScriptsBDStore.sql)
@@ -46,6 +46,17 @@ http://localhost:8080/srv-rest-tienda-servicio/api/store/getStore/3
 Obtiene producto
 http://localhost:8080/srv-rest-tienda-servicio/api/product/getProduct/1
 
+Obtiene token
+http://localhost:8080/srv-rest-tienda-servicio/api/persona/login
+
+
+###Insert para tabla Rol y Persona (JWT)
+
+insert into rol values (1, 'ADMINISTRADOR'); 
+
+INSERT INTO public.persona(
+	fecha_nacimiento, id_persona, id_rol, cedula, telefono, usuario, email, apellidos, nombres, direccion, clave)
+	VALUES ('2024-01-15', 1, 1, '1713736872', '0998026834', 'henry.aguular', 'haguilarmerino@gmail.com', 'AGUILAR MERINO', 'HENRY AUGUSTO', 'CARAPUNGO', '123456');
 
  
 

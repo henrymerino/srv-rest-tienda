@@ -146,3 +146,49 @@ TABLESPACE pg_default;
 
 ALTER TABLE public.store
     OWNER to postgres;
+    
+    
+ -- Table: public.persona
+
+-- DROP TABLE public.persona;
+
+CREATE TABLE IF NOT EXISTS public.persona
+(
+    fecha_nacimiento date,
+    id_persona integer NOT NULL DEFAULT nextval('persona_id_persona_seq'::regclass),
+    id_rol integer,
+    cedula character varying(10) COLLATE pg_catalog."default" NOT NULL,
+    telefono character varying(10) COLLATE pg_catalog."default",
+    usuario character varying(20) COLLATE pg_catalog."default",
+    email character varying(30) COLLATE pg_catalog."default" NOT NULL,
+    apellidos character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    nombres character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    direccion character varying(80) COLLATE pg_catalog."default",
+    clave character varying(100) COLLATE pg_catalog."default",
+    CONSTRAINT persona_pkey PRIMARY KEY (id_persona),
+    CONSTRAINT fkfmpcq2g2sm7s5wb3hrbp0pky FOREIGN KEY (id_rol)
+        REFERENCES public.rol (id_rol) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.persona
+    OWNER to postgres;
+    
+-- Table: public.rol
+
+-- DROP TABLE public.rol;
+
+CREATE TABLE IF NOT EXISTS public.rol
+(
+    id_rol integer NOT NULL DEFAULT nextval('rol_id_rol_seq'::regclass),
+    descripcion character varying(50) COLLATE pg_catalog."default",
+    CONSTRAINT rol_pkey PRIMARY KEY (id_rol)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.rol
+    OWNER to postgres;
