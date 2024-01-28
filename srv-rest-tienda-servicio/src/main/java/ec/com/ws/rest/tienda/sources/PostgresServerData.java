@@ -18,6 +18,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import ec.com.ws.rest.tienda.util.ApplicationUtil;
+
 @Configuration
 @EnableTransactionManagement
 @ComponentScan(basePackages = { "ec.com.ws.rest.tienda.persistence.postgres.service" })
@@ -34,8 +36,8 @@ public class PostgresServerData {
 		em.setPackagesToScan("ec.com.ws.rest.tienda.persistence.postgres.entity");
 
 		HashMap<String, Object> properties = BaseData.entityProperties(em, env);
-		properties.put("hibernate.dialect", env.getProperty("spring.jpa.properties.hibernate.dialect"));
-		properties.put("hibernate.ddl-auto", env.getProperty("hibernate.ddl-auto"));
+		properties.put("hibernate.dialect", ApplicationUtil.getString("postgres.hibernate.dialect"));
+		properties.put("hibernate.ddl-auto", ApplicationUtil.getString("hibernate.ddl-auto"));
 		em.setJpaPropertyMap(properties);
 
 		return em;
@@ -45,7 +47,7 @@ public class PostgresServerData {
 	public DataSource sqlDataSource() {
 		AtomicReference<JndiDataSourceLookup> dataSourceLookup = new AtomicReference<>(new JndiDataSourceLookup());
 		return dataSourceLookup.get()
-				.getDataSource(Objects.requireNonNull(env.getProperty("spring.datasource.primary.jndi-name")));
+				.getDataSource(Objects.requireNonNull(ApplicationUtil.getString("spring.datasource.primary.jndi-name")));
 	}
 
 	

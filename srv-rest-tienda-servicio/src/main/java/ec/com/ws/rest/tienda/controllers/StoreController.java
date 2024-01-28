@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,12 +26,15 @@ import ec.com.ws.rest.tienda.persistence.postgres.entity.StoreEntity;
 import ec.com.ws.rest.tienda.persistence.postgres.repository.ProductRepository;
 import ec.com.ws.rest.tienda.persistence.postgres.repository.StoreRepository;
 import ec.com.ws.rest.tienda.persistence.postgres.service.StoreService;
-import lombok.extern.slf4j.Slf4j;
+//import lombok.extern.slf4j.Slf4j;
+
 
 @RestController
 @RequestMapping("/api/store")
-@Slf4j
+//@Slf4j
 public class StoreController {
+	
+	 private static final Logger LOGGER = LogManager.getLogger(StoreController.class);
 
 	@Autowired
 	private StoreService storeService;
@@ -83,12 +88,14 @@ public class StoreController {
 
 	@GetMapping("/getAllStore")
 	public ResponseEntity<Page<StoreEntity>> getAllStoreById(Pageable pageable) {
+//		log.info("Obtiene todas las tiendas");
 		ResponseEntity<Page<StoreEntity>> pages = null;
 		try {
 			List<ProductEntity> produ = productRepository.findAll();
 			pages = ResponseEntity.ok(storeRepository.findAll(pageable));
 		} catch (Exception e) {
 			e.printStackTrace();
+			LOGGER.error(e.getMessage());
 		}
 
 		return pages;
@@ -96,7 +103,7 @@ public class StoreController {
 
 	@GetMapping("/getAllStores")
 	public ResponseEntity<List<StoreEntity>> getAllStoreById() {
-
+		LOGGER.info("Obtiene todas las tiendas");
 		return ResponseEntity.ok(storeRepository.findAll());
 	}
 

@@ -39,7 +39,9 @@ public class StoreApiApplication extends SpringBootServletInitializer {
 			security.csrf().disable().authorizeRequests().anyRequest().permitAll();
 		}
 	}
-*/	
+	*/
+		
+	
 	 @Configuration
 	    @EnableWebSecurity
 	    @EnableGlobalMethodSecurity(prePostEnabled = true)

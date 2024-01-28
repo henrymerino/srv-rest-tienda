@@ -7,6 +7,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
+import ec.com.ws.rest.tienda.util.ApplicationUtil;
+
 public class BaseData implements Serializable{
 	private static final long serialVersionUID = 1L;
 
@@ -17,12 +19,12 @@ public class BaseData implements Serializable{
                 = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
 
-        properties.put("hibernate.jdbc.lob.non_contextual_creation", env.getProperty("hibernate.jdbc.lob.non_contextual_creation"));
-        properties.put("hibernate.generate_statistics", env.getProperty("hibernate.generate_statistics"));
-        properties.put("hibernate.use_sql_comments", env.getProperty("hibernate.use_sql_comments"));
-        properties.put("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
-        properties.put("hibernate.ddl-auto", env.getProperty("hibernate.ddl-auto"));
-        properties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+        properties.put("hibernate.jdbc.lob.non_contextual_creation",ApplicationUtil.getString("hibernate.jdbc.lob.non_contextual_creation"));
+        properties.put("hibernate.generate_statistics", ApplicationUtil.getString("hibernate.generate_statistics"));
+        properties.put("hibernate.use_sql_comments", ApplicationUtil.getString("hibernate.use_sql_comments"));
+        properties.put("hibernate.format_sql", ApplicationUtil.getString("hibernate.format_sql"));
+        properties.put("hibernate.ddl-auto", ApplicationUtil.getString("hibernate.ddl-auto"));
+        properties.put("hibernate.show_sql", ApplicationUtil.getString("hibernate.show_sql"));
         return properties;
     }
 	
