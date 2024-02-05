@@ -25,7 +25,8 @@
 		<webtoken.version>0.9.1</webtoken.version>
 		<swagger.version>2.9.2</swagger.version>
 		<gson.version>2.10.1</gson.version>
-		<version.log4j>2.19.0</version.log4j>
+		<!--		<version.log4j>2.22.1</version.log4j>-->
+		<version.log4j>3.2.2</version.log4j>
 		<!--		<swagger.version>1.5.13</swagger.version>-->
 	</properties>
 	<dependencyManagement>
@@ -90,20 +91,11 @@
 				<artifactId>springfox-bean-validators</artifactId>
 				<version>${swagger.version}</version>
 			</dependency>
-
 			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-api</artifactId>
-				<version>${version.log4j}</version>
-				<scope>provided</scope>
-			</dependency>
-
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-core</artifactId>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-log4j2</artifactId>
 				<version>${version.log4j}</version>
 			</dependency>
-
 		</dependencies>
 	</dependencyManagement>
 	<modules>

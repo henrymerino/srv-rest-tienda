@@ -2,6 +2,7 @@ package ec.com.ws.rest.tienda.controllers;
 
 import java.util.Objects;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ import ec.com.ws.rest.tienda.persistence.postgres.service.PersonaService;
 @RestController
 @RequestMapping("/api/persona")
 public class PersonaController {
+//	private static final Logger LOGGER = LogManager.getLogger(PersonaController.class);
 
 	@Autowired
 	private PersonaService personaService;
@@ -49,6 +51,7 @@ public class PersonaController {
 			autorizado.setToken(token);
 			response.setData(autorizado);
 		} catch (Exception e) {
+//			LOGGER.error("Error:" + e.getMessage());
 			response.setCode(EnumResponse.ERROR.code());
 			response.setMessage(e.getMessage());
 			return new ResponseEntity<>(response, HttpStatus.FORBIDDEN);

@@ -6,9 +6,8 @@ import org.springframework.stereotype.Component;
 import ec.com.ws.rest.tienda.persistence.postgres.entity.ClientEntity;
 import ec.com.ws.rest.tienda.persistence.postgres.repository.ClientRepository;
 import ec.com.ws.rest.tienda.persistence.postgres.service.ClientService;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+//@Slf4j
 @Component
 public class ClientImplement implements ClientService {
 	

@@ -3,6 +3,7 @@ package ec.com.ws.rest.tienda.controllers;
 import java.net.URI;
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,13 +22,14 @@ import ec.com.ws.rest.tienda.persistence.postgres.entity.ProductEntity;
 import ec.com.ws.rest.tienda.persistence.postgres.entity.StoreEntity;
 import ec.com.ws.rest.tienda.persistence.postgres.service.ProductService;
 import ec.com.ws.rest.tienda.persistence.postgres.service.StoreService;
-import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/api/product")
-@Slf4j
+//@Slf4j
 public class ProductController {
 
+//	private static final Logger LOGGER = LogManager.getLogger(ProductController.class);
+	
 	@Autowired
 	private StoreService storeService;
 
@@ -87,6 +89,7 @@ public class ProductController {
 
 	@GetMapping("/getAllProduct")
 	public ResponseEntity<Page<ProductEntity>> listProduct(Pageable pageable) {
+//		LOGGER.info("Todos los productos" );
 		return ResponseEntity.ok(productService.getAllProductEntiry(pageable));
 
 	}

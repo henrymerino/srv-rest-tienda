@@ -91,11 +91,11 @@ public class StoreController {
 //		log.info("Obtiene todas las tiendas");
 		ResponseEntity<Page<StoreEntity>> pages = null;
 		try {
-			List<ProductEntity> produ = productRepository.findAll();
+//			List<ProductEntity> produ = productRepository.findAll();
 			pages = ResponseEntity.ok(storeRepository.findAll(pageable));
 		} catch (Exception e) {
 			e.printStackTrace();
-			LOGGER.error(e.getMessage());
+//			LOGGER.error(e.getMessage());
 		}
 
 		return pages;

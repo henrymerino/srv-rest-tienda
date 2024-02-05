@@ -6,9 +6,8 @@ import org.springframework.stereotype.Component;
 import ec.com.ws.rest.tienda.persistence.postgres.entity.ClientOrderEntity;
 import ec.com.ws.rest.tienda.persistence.postgres.repository.ClientOrderRepository;
 import ec.com.ws.rest.tienda.persistence.postgres.service.ClienteOrdenService;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+//@Slf4j
 @Component
 public class ClienteOrdenImplement implements ClienteOrdenService {
 

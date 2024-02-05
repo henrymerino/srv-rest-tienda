@@ -6,9 +6,8 @@ import org.springframework.stereotype.Component;
 import ec.com.ws.rest.tienda.persistence.postgres.entity.DetailOrderEntity;
 import ec.com.ws.rest.tienda.persistence.postgres.repository.DetailOrderRepository;
 import ec.com.ws.rest.tienda.persistence.postgres.service.DetailOrderService;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+//@Slf4j
 @Component
 public class DetailOrderImplement implements DetailOrderService {
 

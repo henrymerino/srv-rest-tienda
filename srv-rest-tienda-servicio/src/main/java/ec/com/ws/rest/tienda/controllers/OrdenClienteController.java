@@ -2,6 +2,7 @@ package ec.com.ws.rest.tienda.controllers;
 
 import java.util.Date;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +23,13 @@ import ec.com.ws.rest.tienda.persistence.postgres.service.ClientService;
 import ec.com.ws.rest.tienda.persistence.postgres.service.ClienteOrdenService;
 import ec.com.ws.rest.tienda.persistence.postgres.service.DetailOrderService;
 import ec.com.ws.rest.tienda.persistence.postgres.service.OrdenService;
-import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/api/orden")
-@Slf4j
+//@Slf4j
 public class OrdenClienteController{
+	
+//	 private static final Logger LOGGER = LogManager.getLogger(OrdenClienteController.class);
 
 	@Autowired
 	private ClientService clientService;
@@ -83,6 +85,7 @@ public class OrdenClienteController{
 
 		} catch (Exception e) {
 			e.printStackTrace();
+//			LOGGER.error("Error:" + e.getMessage());
 			response = new ResponseModel(EnumResponse.ERROR.code());
 			return new ResponseEntity<>(response, HttpStatus.CONFLICT);
 		}

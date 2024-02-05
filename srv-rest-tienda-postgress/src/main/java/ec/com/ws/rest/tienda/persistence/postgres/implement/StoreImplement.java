@@ -10,9 +10,8 @@ import org.springframework.stereotype.Component;
 import ec.com.ws.rest.tienda.persistence.postgres.entity.StoreEntity;
 import ec.com.ws.rest.tienda.persistence.postgres.repository.StoreRepository;
 import ec.com.ws.rest.tienda.persistence.postgres.service.StoreService;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+//@Slf4j
 @Component
 public class StoreImplement implements StoreService {
 

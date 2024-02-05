@@ -11,15 +11,15 @@ import ec.com.ws.rest.tienda.util.ApplicationUtil;
 
 public class BaseData implements Serializable{
 	private static final long serialVersionUID = 1L;
-
+	private static final String PREFIJO_APLICACION = "srv.rest.tienda.";
 	
 	static HashMap<String, Object> entityProperties(LocalContainerEntityManagerFactoryBean em, Environment env) {
         HashMap<String, Object> properties = new HashMap<>();
         HibernateJpaVendorAdapter vendorAdapter
                 = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
-
-        properties.put("hibernate.jdbc.lob.non_contextual_creation",ApplicationUtil.getString("hibernate.jdbc.lob.non_contextual_creation"));
+//        System.out.println(env.getProperty(PREFIJO_APLICACION + "hibernate.jdbc.lob.non_contextual_creation"));
+        properties.put("hibernate.jdbc.lob.non_contextual_creation",env.getProperty(PREFIJO_APLICACION + "hibernate.jdbc.lob.non_contextual_creation"));
         properties.put("hibernate.generate_statistics", ApplicationUtil.getString("hibernate.generate_statistics"));
         properties.put("hibernate.use_sql_comments", ApplicationUtil.getString("hibernate.use_sql_comments"));
         properties.put("hibernate.format_sql", ApplicationUtil.getString("hibernate.format_sql"));

@@ -59,9 +59,9 @@ public class LectorProperties {
 	}
 
 	private void generateKeys() {
-		this.keys = new HashSet();
-		Set<String> keysFile = new HashSet(System.getProperties().stringPropertyNames());
-		Iterator var3 = keysFile.iterator();
+		this.keys = new HashSet<String>();
+		Set<String> keysFile = new HashSet<String>(System.getProperties().stringPropertyNames());
+		Iterator<String> var3 = keysFile.iterator();
 
 		while (var3.hasNext()) {
 			String key = (String) var3.next();

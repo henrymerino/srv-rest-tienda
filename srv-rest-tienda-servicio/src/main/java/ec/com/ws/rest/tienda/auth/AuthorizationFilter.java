@@ -75,10 +75,11 @@ public class AuthorizationFilter extends OncePerRequestFilter {
 			return false;
 		return true;
 	}
-	
+
 	public static String getJWTToken(String username, String rol, boolean keepSession) {
-		List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList(rol.toUpperCase());
-		
+		List<GrantedAuthority> grantedAuthorities = AuthorityUtils
+				.commaSeparatedStringToAuthorityList(rol.toUpperCase());
+
 		String token = "";
 		JwtBuilder jwtBuilder = Jwts
 				.builder()
@@ -89,17 +90,17 @@ public class AuthorizationFilter extends OncePerRequestFilter {
 								.map(GrantedAuthority::getAuthority)
 								.collect(Collectors.toList()))
 				.setIssuedAt(new Date(System.currentTimeMillis()));
-		if(!keepSession) {
+		if (!keepSession) {
 			jwtBuilder.setExpiration(new Date(System.currentTimeMillis() + 600000));
 		}
-				
+
 		token = jwtBuilder.signWith(SignatureAlgorithm.HS512, AuthorizationFilter.SECRET.getBytes()).compact();
 
 		return AuthorizationFilter.PREFIX + token;
 	}
-	
-	 public static void main(String[] args) {
-		 System.out.println(getJWTToken("administrador|ADMIN", "ADMINISTRADOR", true));
-	 }
+
+	public static void main(String[] args) {
+		System.out.println(getJWTToken("administrador|ADMIN", "ADMINISTRADOR", true));
+	}
 
 }

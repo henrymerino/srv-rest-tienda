@@ -10,19 +10,17 @@ import org.springframework.stereotype.Component;
 
 import ec.com.ws.rest.tienda.persistence.postgres.entity.ProductEntity;
 import ec.com.ws.rest.tienda.persistence.postgres.repository.ProductRepository;
-import ec.com.ws.rest.tienda.persistence.postgres.repository.StoreRepository;
 import ec.com.ws.rest.tienda.persistence.postgres.service.ProductService;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+//@Slf4j
 @Component
 public class ProductImplement implements ProductService {
 
 	@Autowired
 	private ProductRepository productRepository;
 
-	@Autowired
-	private StoreRepository storeRepository;
+//	@Autowired
+//	private StoreRepository storeRepository;
 
 	@Override
 	public ProductEntity saveProduct(ProductEntity product) {
